@@ -166,10 +166,28 @@ function todoMain() {
   }
 
   function saveSortView() {
+    if (sortView.length == 0) {
+      sortView = [
+        sortDateAddedElem.value,
+        sortCategoryElem.value,
+        sortCompletedElem.value,
+        sortDateDueElem.value,
+      ];
+    }
     localStorage.setItem("sortView", JSON.stringify(sortView));
   }
 
   function saveColumnView() {
+    if (columnView == 0) {
+      columnView = [
+        showDateAddedCB.checked,
+        showTodoTaskCB.checked,
+        showCategoryCB.checked,
+        showDateDueCB.checked,
+        showCompletedCB.checked,
+        showDeleteCB.checked,
+      ];
+    }
     localStorage.setItem("columnView", JSON.stringify(columnView));
   }
 
