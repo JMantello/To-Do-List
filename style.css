@@ -1,0 +1,264 @@
+:root {
+  --table-accent-light: rgb(202, 202, 202);
+  --table-accent-dark: rgb(84, 84, 84);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: gainsboro;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+}
+
+.main-content {
+  margin: auto;
+  padding: 20px;
+  max-width: 800px;
+}
+
+#header-h2 {
+  padding-bottom: 10px;
+}
+
+.main-content h2 {
+  font-weight: 300;
+  font-size: 30px;
+  border-bottom: 1px solid;
+  margin: auto;
+  padding-bottom: 15px;
+  box-shadow: 0.2rem 0.2rem rgb(119, 128, 121), -0.4rem -0.4rem #ccc; /* CSS Tricks */
+  padding: 5px;
+  padding-left: 15px;
+}
+
+.todo-components-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  gap: 5px;
+}
+
+.todo-filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: auto;
+  padding-right: 10px;
+  padding-top: 16px;
+}
+
+.todo-filter-section h2 {
+  font-weight: 300;
+  font-size: 22px;
+  margin: 0;
+  margin-bottom: 13px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+}
+
+.todo-filter-section select:first-of-type {
+  margin-top: 5px;
+}
+
+.todo-filter-section select {
+  font-size: 14px;
+  background-color: #ccc;
+  border: none;
+  padding: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  max-width: 155px;
+  color: black;
+  transition: background 270ms ease-in-out, transform 150ms ease;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.todo-filter-section select:hover {
+  background-color: whitesmoke;
+}
+
+.filter-column-item:first-of-type {
+  margin-top: 5px;
+}
+
+.filter-columns {
+  padding-top: 28px;
+}
+
+.filter-column-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 10px;
+  height: 20px;
+  font-weight: 300;
+}
+
+.filter-column-item label {
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Checkbox Styling in progress */
+
+.filter-column-item input {
+  cursor: pointer;
+  /* opacity: 0;
+  position: absolute; */
+}
+
+/* .filter-column-item::after {
+  cursor: pointer;
+  content: "";
+  width: 1em;
+  height: 1em;
+  border: 0.05em solid black;
+  border-radius: 0.1em;
+} */
+
+/* .filter-column-item:hover::after {
+  background-color: gray;
+} */
+
+/* .filter-column-item
+  input[type="checkbox"]:checked
+  + .filter-column-item::after {
+  background-color: rgb(118, 118, 118);
+} */
+
+.todo-input-output-section {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.add-todo-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding-left: 1.5px;
+  padding-bottom: 20px;
+}
+
+.add-todo-section #task-input,
+#category-input {
+  height: 29px;
+  min-width: 50px;
+  flex: 1;
+  background-color: rgb(253, 253, 253);
+  border: 1px solid rgb(120, 120, 120);
+}
+
+#due-date-input {
+  background-color: rgb(253, 253, 253);
+  border: 1px solid rgb(120, 120, 120);
+  height: 29px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#add-todo-btn {
+  width: 65px;
+  cursor: pointer;
+  border-radius: 14px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  padding: 0.4rem 1rem;
+  padding-top: 0.3rem;
+  height: 100%;
+  background: #ccc;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  transition: background 270ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 0.2rem 0.2rem rgb(119, 128, 121);
+}
+
+#add-todo-btn:hover,
+#add-todo-btn:focus {
+  background: rgb(253, 253, 253);
+}
+
+#add-todo-btn:focus {
+  outline: 1px solid gray;
+}
+
+#add-todo-btn:active {
+  transform: scale(0.99);
+}
+
+#todo-table {
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgb(0, 0, 0, 0.15);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#todo-table-header tr {
+  border: 1px solid var(--table-accent-dark);
+}
+
+#todo-table-header th {
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid var(--table-accent-light);
+  border-top: 2px solid var(--table-accent-dark);
+  border-bottom: 1px solid var(--table-accent-dark);
+  font-style: italic;
+  background-color: var(--table-accent-light);
+  font-weight: 400;
+}
+#todo-table-header th:first-child {
+  border-left: 1px solid var(--table-accent-dark);
+}
+#todo-table-header th:last-child {
+  border-right: 1px solid var(--table-accent-dark);
+}
+
+#todo-table td {
+  padding: 6px;
+  border: 1px solid var(--table-accent-light);
+}
+
+#todo-table td:first-child {
+  border-left: 1px solid var(--table-accent-dark);
+}
+#todo-table td:last-child {
+  border-right: 1px solid var(--table-accent-dark);
+}
+
+#todo-table tr:last-child td {
+  border-bottom: 1px solid var(--table-accent-dark);
+}
+
+.todo-row {
+  background-color: whitesmoke;
+  font-size: 14px;
+}
+
+#todo-table tr {
+  text-align: center;
+}
+
+.delete-todo-btn {
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.hide {
+  display: none;
+}

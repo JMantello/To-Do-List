@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="js/app.js" type="module"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <div class="main-content">
+      <h2 id="header-h2">To-Do List</h2>
+      <br />
+      <div class="todo-components-wrapper">
+        <div class="todo-filter-section">
+          <h2>Filters:</h2>
+          <select id="date-added-sort-selection" class="filter-selection-item">
+            <option value="default-date-added-selection">Date Added</option>
+            <option value="Date Added: First">Date Added: First</option>
+            <option value="Date Added: Last">Date Added: Last</option>
+          </select>
+          <select id="category-sort-selection" class="filter-selection-item">
+            <option value="default-category-option">Category: All</option>
+          </select>
+          <select id="completed-sort-selection" class="filter-selection-item">
+            <option value="default-completed-section">Completed</option>
+            <option value="Completed: Top">Completed: Top</option>
+            <option value="Completed: Bottom">Completed: Bottom</option>
+            <option value="Completed: Hide">Completed: Hide</option>
+          </select>
+          <select id="due-date-sort-selection" class="filter-selection-item">
+            <option value="default-date-due-selection">Due Date</option>
+            <option value="Date Due: First">Date Due: First</option>
+            <option value="Date Due: Last">Date Due: Last</option>
+          </select>
+          <div class="filter-columns">
+            <h2>Columns:</h2>
+            <div class="filter-column-item">
+              <label for="filterDateAddedCB">Date Added</label>
+              <input type="checkbox" id="filterDateAddedCB" checked />
+            </div>
+            <div class="filter-column-item">
+              <label for="filterTodoTaskCB">To-Do Task</label>
+              <input type="checkbox" id="filterTodoTaskCB" checked />
+            </div>
+            <div class="filter-column-item">
+              <label for="filterCategoryCB">Category</label>
+              <input type="checkbox" id="filterCategoryCB" checked />
+            </div>
+            <div class="filter-column-item">
+              <label for="filterDateDueCB">Date Due</label>
+              <input type="checkbox" id="filterDateDueCB" checked />
+            </div>
+            <div class="filter-column-item">
+              <label for="filterCompletedCB">Completed</label>
+              <input type="checkbox" id="filterCompletedCB" checked />
+            </div>
+            <div class="filter-column-item">
+              <label for="filterDeleteCB">Delete</label>
+              <input type="checkbox" id="filterDeleteCB" checked />
+            </div>
+          </div>
+        </div>
+        <div class="todo-input-output-section">
+          <div class="add-todo-section">
+            <input type="text" id="task-input" placeholder="To-Do..." />
+            <input
+              type="text"
+              id="category-input"
+              placeholder="Category"
+              list="category-input-list"
+            />
+            <datalist id="category-input-list">
+              <option value="Personal">Personal</option>
+              <option value="School">School</option>
+            </datalist>
+            <input type="date" id="due-date-input" />
+            <button id="add-todo-btn">Add</button>
+          </div>
+          <table class="todo-table" id="todo-table">
+            <tr id="todo-table-header">
+              <th class="column-date-added">Date Added</th>
+              <th class="column-todo-task">To-Do Task</th>
+              <th class="column-category">Category</th>
+              <th class="column-date-due">Date Due</th>
+              <th class="column-completed">Completed</th>
+              <th class="column-delete">Delete</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
