@@ -25,6 +25,7 @@ body {
 
 #header-h2 {
   padding-bottom: 10px;
+  min-width: 740px;
 }
 
 .main-content h2 {

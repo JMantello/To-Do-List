@@ -1,3 +1,7 @@
+jQuery(function ($) {
+  $("body").css("display", "block");
+});
+
 window.addEventListener("load", () => {
   todoMain();
   console.log("To-Do List loaded successfully.");
@@ -38,6 +42,27 @@ function todoMain() {
     retrieveAppData();
     loadAppData();
     renderTable();
+    preloadTodo();
+  }
+
+  function preloadTodo() {
+    var dateNow = new Date();
+    if (todoData.length == 0) {
+      let todo = {
+        id: generateUUID(),
+        dateAdded: dateNow,
+        task: "Add a To-Do Task",
+        category: "Demo",
+        dateDue: "----/--/--",
+        completed: false,
+      };
+
+      todoData.push(todo);
+
+      saveTodoData();
+
+      renderTable();
+    }
   }
 
   function getElements() {
@@ -392,7 +417,7 @@ function todoMain() {
     // Date Due :
     let dateDueSpan = document.createElement("span");
     dateDueSpan.classList.add("date-due-span");
-    if (todo.dateDue == "") dateDueSpan.innerText = todo.dateDue;
+    if (todo.dateDue == "") dateDueSpan.innerText = "--/--/----";
     else {
       // Format date from input
       let year = todo.dateDue.substring(0, 4);
