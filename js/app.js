@@ -53,7 +53,7 @@ function todoMain() {
         dateAdded: dateNow,
         task: "Add a To-Do Task",
         category: "Demo",
-        dateDue: "----/--/--",
+        dateDue: "",
         completed: false,
       };
 
@@ -132,6 +132,10 @@ function todoMain() {
     taskInputElem.value = "";
     categoryInputElem.value = "";
     dateDueInputElem.value = "";
+
+    loadCategoryInputOptions();
+
+    loadSortCategoryOptions();
 
     renderTable();
   }
@@ -286,6 +290,7 @@ function todoMain() {
       sortedTodos.sort((todoA, todoB) => {
         let dateA = Date.parse(todoA.dateAdded);
         let dateB = Date.parse(todoB.dateAdded);
+
         return dateA - dateB;
       });
     }
@@ -298,7 +303,6 @@ function todoMain() {
       });
     }
 
-    // Under construction
     if (sortCompletedElem.value == "Completed: Top") {
       sortedTodos.sort((todoA, todoB) => {
         if (!todoA.completed && todoB.completed) return 1;
@@ -321,6 +325,8 @@ function todoMain() {
         let dateB = Date.parse(todoB.dateDue);
         return dateA - dateB;
       });
+
+      blankDateDueToBottom();
     }
 
     if (sortDateDueElem.value == "Date Due: Last") {
@@ -328,6 +334,16 @@ function todoMain() {
         let dateA = Date.parse(todoA.dateDue);
         let dateB = Date.parse(todoB.dateDue);
         return dateB - dateA;
+      });
+
+      blankDateDueToBottom();
+    }
+
+    function blankDateDueToBottom() {
+      sortedTodos.sort((todoA, todoB) => {
+        if (todoA.dateDue == "") return -1;
+        if (todoB.dateDue == "") return -1;
+        return 1;
       });
     }
 
@@ -417,7 +433,7 @@ function todoMain() {
     // Date Due :
     let dateDueSpan = document.createElement("span");
     dateDueSpan.classList.add("date-due-span");
-    if (todo.dateDue == "") dateDueSpan.innerText = "--/--/----";
+    if (todo.dateDue == "") dateDueSpan.innerText = "";
     else {
       // Format date from input
       let year = todo.dateDue.substring(0, 4);
@@ -537,13 +553,13 @@ function todoMain() {
   }
 
   function loadCategoryInputOptions() {
-    let prevOptions = document.getElementById("category-input-list").options;
-    Array.from(prevOptions).forEach((option) => {
+    let categoryInputList = document.getElementById("category-input-list");
+    Array.from(categoryInputList.options).forEach((option) => {
       option.remove();
     });
 
     for (let option of getCategoryOptions()) {
-      categoryInputElem.appendChild(createCategoryOption(option));
+      categoryInputList.appendChild(createCategoryOption(option));
     }
   }
 
